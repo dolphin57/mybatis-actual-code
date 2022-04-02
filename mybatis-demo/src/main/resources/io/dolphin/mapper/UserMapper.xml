@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.dolphin.mapper.UserMapper">
+    <select id="findUserById" resultType="io.dolphin.entity.User" >
+        select * from user where id = #{id}
+    </select>
+
+
+    <!--
+      动态sql数据源  需要在调用crud 解析sql
+      静态sql数据源        解析CURD节点的就会把sql解析好
+
+      1  select id,user_name,create_time from t_user where id=1   动态
+
+      2  select id,user_name,create_time from t_user where id= ?   静态
+
+      3  select id,user_name,create_time from t_user
+      <where>
+         <if test="id>0">
+         and id=${id}
+         </if>
+      </where>
+      动态
+    -->
+</mapper>
