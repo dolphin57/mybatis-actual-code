@@ -1,13 +1,12 @@
 package io.dolphin.mapper;
 
 import io.dolphin.entity.User;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper {
-    public void insert(User user);
 
     public User findUserById (int userId);
 
-    public List<User> findAllUsers();
+    @Select("select * from user where id=#{id}")
+    User selectUser(int userId);
 }
